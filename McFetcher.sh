@@ -9,6 +9,8 @@ MCUSER="mcserver"
 MCID=$(id -u $MCUSER)
 # Command starting the server
 MCSTART="service minecraft start"
+# COmmand stopping the Server
+MCSTOP="sudo -u $MCUSER tmux send stop \"Enter\""
 
 
 cd $WDIR
@@ -24,7 +26,7 @@ else
     echo "Downloading new Version"
     wget --no-check-certificate $DPATH
     echo "Stopping Server ..."
-    sudo -u $MCUSER tmux send stop "Enter"
+    $MCSTOP
     sleep 10
     if [ -z "$(pgrep -u $MCID java)" ]
     then
