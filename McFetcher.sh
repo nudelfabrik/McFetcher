@@ -25,21 +25,23 @@ then
 else
     echo "Downloading new Version"
     wget --no-check-certificate $DPATH
-    echo "Stopping Server ..."
-    $MCSTOP
-    sleep 10
-    if [ -z "$(pgrep -u $MCID java)" ]
-    then
-        echo "Server is Down!"
-        echo "Replace minecraft_server.jar"
-        cp $FILE minecraft_server.jar
-    else
-        echo "Something is wrong!"
-        echo "Minecraft still running!"
-        exit 1
+    if [ $1 == "--replace" ] then
+        echo "Stopping Server ..."
+        $MCSTOP
+        sleep 10
+        if [ -z "$(pgrep -u $MCID java)" ]
+        then
+            echo "Server is Down!"
+            echo "Replace minecraft_server.jar"
+            cp $FILE minecraft_server.jar
+        else
+            echo "Something is wrong!"
+            echo "Minecraft still running!"
+            exit 1
+        fi
+        echo "Starting Server"
+        $MCSTART
     fi
-    echo "Starting Server"
-    $MCSTART
     rm index.html
     exit 0
 
