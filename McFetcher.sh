@@ -9,8 +9,12 @@ MCUSER="mcserver"
 MCID=$(id -u $MCUSER)
 # Command starting the server
 MCSTART="service minecraft start"
-# COmmand stopping the Server
+# Command stopping the Server
+# tmux: \"Enter\"
+# screen: \015
 MCSTOP="sudo -u $MCUSER tmux send stop \"Enter\""
+# screen: screen -S minecraft -p 0 -X stuff "stop$(printf \\r)"
+# see http://unix.stackexchange.com/questions/13953/sending-text-input-to-a-detached-screen
 
 
 cd $WDIR
