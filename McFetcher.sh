@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # SETTINGS
 # Minecraft Server directory
@@ -25,11 +25,13 @@ FILE=$(echo $DPATH | grep -o minecraft_server.\*.jar)
 if [ -s $FILE ]
 then
     echo "No new Version available"
+    rm index.html
     exit 0
 else
     echo "Downloading new Version"
     wget --no-check-certificate $DPATH
-    if [ $1 == "--replace" ] then
+    if [[ $1 == "--replace" ]]
+    then
         echo "Stopping Server ..."
         $MCSTOP
         sleep 10
