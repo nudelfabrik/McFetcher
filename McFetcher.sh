@@ -19,7 +19,7 @@ MCSTOP="su -l $MCUSER tmux send stop \"Enter\""
 
 cd $WDIR
 echo "Getting Mojang Feed..."
-wget --no-check-certificate https://mojang.com/feed/
+wget -q --no-check-certificate -O index.html https://mojang.com/feed/
 DPATH=$(grep -o -m 1 \"https://s3.amazonaws.com/Minecraft.Download/versions/.\*.jar\" index.html | sed 's/\"//g')
 FILE=$(echo $DPATH | grep -o minecraft_server.\*.jar)
 
