@@ -33,7 +33,7 @@ else
 fi
 
 # Check if newest version is also the one used atm
-if [[ $(shasum $FILE | awk '{print $1}') -eq $(shasum minecraft_server.jar | awk '{print $1}') ]]
+if [ $(shasum $FILE | awk '{print $1}') = $(shasum minecraft_server.jar | awk '{print $1}') ]
 then
     echo "Newest Version already installed"
     rm index.html
