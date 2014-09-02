@@ -12,7 +12,7 @@ MCSTART="service minecraft start"
 # Command stopping the Server
 # tmux: \"Enter\"
 # screen: \015
-MCSTOP="sudo -u $MCUSER tmux send stop \"Enter\""
+MCSTOP="su -l $MCUSER tmux send stop \"Enter\""
 # screen:  "screen -S minecraft -p 0 -X stuff "stop$(printf \\r)""
 # see http://unix.stackexchange.com/questions/13953/sending-text-input-to-a-detached-screen
 
