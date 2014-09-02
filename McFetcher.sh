@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 # SETTINGS
 # Minecraft Server directory
-WDIR="/usr/local/share/minecraft-server/"
+WDIR="/usr/local/minecraft/"
 # User running the server
 MCUSER="mcserver"
 # uid of MCUSER
